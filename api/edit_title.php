@@ -13,9 +13,9 @@ if(isset($_POST['id'])){
             $Title->save($row);
         }
     }
-
 }
 
 to("../admin.php?do=title");
 
+// dd($row);
 ?>
