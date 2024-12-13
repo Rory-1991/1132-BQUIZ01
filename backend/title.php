@@ -5,8 +5,7 @@
         <tbody>
             <tr>
                 <td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;" class="cent"><a
-                        href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a>
-                </td>
+                        href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a></td>
                 <td><button onclick="document.cookie=&#39;user=&#39;;location.replace(&#39;?&#39;)"
                         style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
             </tr>
@@ -30,24 +29,24 @@
                     ?>
                     <tr>
                         <td>
-                            <img src="./upload/<?=$row['img'];?>" style="width:300px;height:30px;">
-                        </td>
-                        <td><input type="text" name="text[]" value="<?=$row['text'];?>">
+                            <img src="./upload/<?=$row['img'];?>" style="width:300px;height:30px;">    
                         </td>
                         <td>
-                            <input type="radio" name="sh" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
+                            <input type="text" name="text[]" value="<?=$row['text'];?>">    
+                        </td>
+                        <td>
+                            <input type="radio" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
                         </td>
                         <td>
                             <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
                         </td>
                         <td>
                             <input type="button" 
-                            onclick="op('#cover','#cvr','./modal/upload_<?=$do;?>.php?id=<?=$row['id'];?>&table=<?=$do;?>')"
-                            value="更新圖片"></button>
+                                onclick="op('#cover','#cvr','./modal/upload_<?=$do;?>.php?id=<?=$row['id'];?>&table=<?=$do;?>')"
+                                  value="更新圖片">
                         </td>
                         <input type="hidden" name="id[]" value="<?=$row['id'];?>">
                     </tr>
-
                     <?php
                     }
                     ?>
@@ -56,8 +55,9 @@
             <table style="margin-top:40px; width:70%;">
                 <tbody>
                     <tr>
-                        <td width="200px"><input type="button"
-                               onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;./modal/<?=$do;?>.php?table=<?=$do;?>&#39;)"
+                        <td width="200px">
+                            <input type="button"
+                                onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;./modal/<?=$do;?>.php?table=<?=$do;?>&#39;)"
                                 value="新增網站標題圖片"></td>
                         <td class="cent">
                         <input type="hidden" name="table" value="<?=$do;?>">
