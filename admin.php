@@ -1,4 +1,4 @@
-﻿<?php include_once "api/db.php";?>
+﻿﻿<?php include_once "api/db.php";?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0068)?do=admin&redo=title -->
@@ -13,17 +13,19 @@
     <script src="./js/js.js"></script>
 </head>
 
-<body>
+<body>`
     <div id="cover" style="display:none; ">
         <div id="coverr">
             <a style="position:absolute; right:3px; top:4px; cursor:pointer; z-index:9999;"
                 onclick="cl(&#39;#cover&#39;)">X</a>
-            <div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
+            <div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;">
+
+			</div>
         </div>
     </div>
     <iframe style="display:none;" name="back" id="back"></iframe>
     <div id="main">
-        <a title="" href="index.php">
+        <a title="<?=$Title->find(['sh'=>1])['text'];?>" href="index.php">
             <div class="ti" style="background:url('./upload/<?=$Title->find(['sh'=>1])['img'];?>'); background-size:cover;"></div>
             <!--標題-->
         </a>
@@ -35,6 +37,7 @@
                     <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=title">
                         <div class="mainmu">
                             網站標題管理 </div>
+                            
                     </a>
                     <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=ad">
                         <div class="mainmu">
@@ -73,23 +76,22 @@
                 </div>
                 <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     <span class="t">進站總人數 :
-                    <?=$Total->find(1)['total'];?> </span>
+                    <?=$Total->find(1)['total'];?></span>
                 </div>
             </div>
             <?php
 				$do=$_GET['do']??'title';
 				$file="./backend/{$do}.php";
+
 				if(file_exists($file)){
 					include $file;
 				}else{
 					include "./backend/title.php";
 				}
-				
 				?>
 
         </div>
         <div style="clear:both;"></div>
-         <!-- 頁尾 -->
         <div
             style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
             <span class="t" style="line-height:123px;"><?=$Bottom->find(1)['bottom'];?></span>
