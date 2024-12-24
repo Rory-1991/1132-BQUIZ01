@@ -1,7 +1,9 @@
 <?php
 
+session_start();
+
 class DB{
-    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db15";
+    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db10";
     protected $pdo;
     protected $table;
 
@@ -9,8 +11,6 @@ class DB{
         $this->table=$table;
         $this->pdo=new PDO($this->dsn,'root','');
     }
-
-
 
     /**
      * 撈出全部資料
@@ -147,10 +147,9 @@ class DB{
 }
 
 function q($sql){
-    $pdo=new PDO("mysql:host=localhost;charset=utf8;dbname=db15",'root','');
+    $pdo=new PDO("mysql:host=localhost;charset=utf8;dbname=db10",'root','');
     return $pdo->query($sql)->fetchAll();
 }
-
 
 function dd($array){
     echo "<pre>";
@@ -162,6 +161,7 @@ function to($url){
     header("location:".$url);
 }
 
+
 $Title=new DB('titles');
 $Ad=new DB('ads');
 $Image=new DB('images');
@@ -171,3 +171,11 @@ $Admin=new DB('admin');
 $Menu=new DB('menus');
 $Total=new DB('total');
 $Bottom=new DB('bottom');
+
+
+if(!isset($_SESSION['view'])){
+    $_SESSION['view']=1;
+    $total=$Total->find(1);
+    $total['total']++;
+    $Total->save($total);
+}
