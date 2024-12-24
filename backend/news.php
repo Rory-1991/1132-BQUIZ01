@@ -1,17 +1,7 @@
 <div class="di"
     style="height:540px; border:#999 1px solid; width:76.5%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
     <!--正中央-->
-    <table width="100%">
-        <tbody>
-            <tr>
-                <td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;" class="cent"><a
-                        href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a>
-                </td>
-                <td><button onclick="document.cookie=&#39;user=&#39;;location.replace(&#39;?&#39;)"
-                        style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <?php include_once "logout.php";?>
     <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
         <p class="t cent botli">最新消息資料內容管理</p>
         <form method="post" action="./api/edit.php">
@@ -23,6 +13,7 @@
                         <td width="10%">刪除</td>
                     </tr>
                     <?php
+
                     $div=4;
                     $total=$News->count();
                     $pages=ceil($total/$div);
@@ -34,7 +25,7 @@
                     ?>
                     <tr>
                         <td>
-                            <textarea name="text[]" style="width:95%;height:60px;"><?=$row['text'];?></textarea>
+                            <textarea name="text[]"  style="width:95%;height:60px;"><?=$row['text'];?></textarea>
                         </td>
                         <td>
                             <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
@@ -44,7 +35,6 @@
                         </td>
                         <input type="hidden" name="id[]" value="<?=$row['id'];?>">
                     </tr>
-
                     <?php
                     }
                     ?>
@@ -57,16 +47,12 @@
                     $prev=$now-1;
                     echo "<a href='?do=$do&p=$prev'> < </a>";
                 }
-
-                
-                
                 for($i=1;$i<=$pages;$i++){
                     $size=($i==$now)?"24px":"16px";
                     echo "<a href='?do=$do&p=$i' style='font-size:$size'> ";
                     echo $i;
                     echo " </a>";
                 }
-
                 if(($now+1)<=$pages){
                     $next=$now+1;
                     echo "<a href='?do=$do&p=$next'> > </a>";
@@ -77,11 +63,12 @@
             <table style="margin-top:40px; width:70%;">
                 <tbody>
                     <tr>
-                        <td width="200px"><input type="button"
+                        <td width="200px">
+                            <input type="button"
                                 onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;./modal/<?=$do;?>.php?table=<?=$do;?>&#39;)"
                                 value="新增最新消息資料"></td>
                         <td class="cent">
-                        <input type="hidden" name="table" value="<?=$do;?>">
+                            <input type="hidden" name="table" value="<?=$do;?>">
                             <input type="submit" value="修改確定">
                             <input type="reset" value="重置">
                         </td>
