@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-12-09 09:36:25
+-- 產生時間： 2025-02-04 04:52:00
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫： `db10`
+-- 資料庫： `db15`
 --
 
 -- --------------------------------------------------------
@@ -62,6 +62,24 @@ INSERT INTO `ads` (`id`, `text`, `sh`) VALUES
 (5, '8888轉知:教育是人類升沉的樞紐-2013教師生命成長營', 1),
 (6, '34432432', 1),
 (7, 'sdfasdfasdfs', 1);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `bottom`
+--
+
+CREATE TABLE `bottom` (
+  `id` int(11) NOT NULL,
+  `bottom` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `bottom`
+--
+
+INSERT INTO `bottom` (`id`, `bottom`) VALUES
+(1, '這是頁腳內容');
 
 -- --------------------------------------------------------
 
@@ -182,6 +200,25 @@ INSERT INTO `titles` (`id`, `img`, `text`, `sh`) VALUES
 (7, '01B02.jpg', 'dsfsadfsd', 0),
 (8, '01B03.jpg', 'dsfadsfasfs', 0);
 
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `total`
+--
+
+CREATE TABLE `total` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `total` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `total`
+--
+
+INSERT INTO `total` (`id`, `date`, `total`) VALUES
+(1, '0000-00-00', 999);
+
 --
 -- 已傾印資料表的索引
 --
@@ -196,6 +233,12 @@ ALTER TABLE `admin`
 -- 資料表索引 `ads`
 --
 ALTER TABLE `ads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `bottom`
+--
+ALTER TABLE `bottom`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -229,6 +272,12 @@ ALTER TABLE `titles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `total`
+--
+ALTER TABLE `total`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
 
@@ -243,6 +292,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `ads`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `bottom`
+--
+ALTER TABLE `bottom`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `images`
@@ -273,6 +328,12 @@ ALTER TABLE `news`
 --
 ALTER TABLE `titles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `total`
+--
+ALTER TABLE `total`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
